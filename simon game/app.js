@@ -1,13 +1,13 @@
 let gameSeq = [];
 let userSeq = [];
 
-let score = [level];
+let level = 0;
+let highestScore = 0; 
 
 let btns = ['yellow', 'red', 'purple', 'green'];
 
 let started = false;
 let h2 = document.querySelector('h2');
-let level = 0;
 document.addEventListener("keypress", function () {
   if (!started) {
     console.log("started")
@@ -42,20 +42,16 @@ function levelUp() {
 }
 
 function btnPress() {
-  // console.log(this)
   let btn = this;
   userFlash(btn);
   userColor = btn.getAttribute('id');
   userSeq.push(userColor);
   checkAns();
 }
-score.push(level);
-console.log(score);
+
 function checkAns() {
-  // console.log("Curr level : ",level );
   let idx = userSeq.length - 1;
   if (userSeq[idx] === gameSeq[idx]) {
-    // console.log("same value");
     if (userSeq.length === gameSeq.length) {
       setTimeout(levelUp, 1000);
     }
@@ -69,7 +65,6 @@ function checkAns() {
     reset();
   }
 }
-
 
 let allBtns = document.querySelectorAll('.btn');
 for (btn of allBtns) {
