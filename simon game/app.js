@@ -56,6 +56,9 @@ function checkAns() {
       setTimeout(levelUp, 1000);
     }
   } else {
+    if (level > highestScore) {
+      highestScore = level;
+    }
     h2.innerText = `Game over! Your Score was ${level}\n Highest Score is ${highestScore}\nPress any key to start `
     let body = document.querySelector('body').style.backgroundColor = "orange";
     setTimeout(function () {
